@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/podcast/:podcastId" element={<PodcastDetailsPage />} />
-        <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetailsPage />} />
+        <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastDetailsPage />} />
       </Routes>
     </Router>
   );

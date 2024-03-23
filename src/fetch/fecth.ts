@@ -1,22 +1,12 @@
-import { PodcastData } from '../types/types';
-
-
-export const fetchPodcasts = async (url: string): Promise<PodcastData> => {
-
+export const fetchPodcasts = async <T>(fetchData: () => Promise<T>): Promise<T> => {
     try {
-        const response = await fetch(url);
-        const data: PodcastData = await response.json();
-        return data;
+        return await fetchData();
     } catch (error) {
-
-        console.error(`Error en el primer intento: ${error instanceof Error ? error.message : error}`);
+        console.error(`Error: ${error instanceof Error ? error.message : error}`);
         console.log("Intentando de nuevo...");
-
-        // Segundo intento (ya que el API responde lentamente y he observado que ocasionalmente falla)
         try {
-            const response = await fetch(url);
-            const data: PodcastData = await response.json();
-            return data;
+            // He notado que la API va algo lenta, hago un segundo intento si falla al primero
+            return await fetchData();
         } catch (secondError) {
             throw new Error(`Error: ${secondError instanceof Error ? secondError.message : secondError}`);
         }

@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html', // La ruta a tu archivo index.html
+      template: './public/index.html',
     }),
   ],
   resolve: {
@@ -26,9 +26,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader', // 3. Inyecta estilos en el DOM
-          'css-loader',   // 2. Convierte CSS en CommonJS
-          'sass-loader'   // 1. Convierte SCSS en CSS
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ],
       }
     ]

@@ -1,0 +1,18 @@
+# Ignorar archivos de compilación y carpetas generadas
+/node_modules
+/build
+/dist
+/.cache
+
+# Ignorar archivos de configuración local
+.env
+.env.local
+
+# Ignorar archivos de dependencias específicos de IDE
+/.idea
+/.vscode
+
+# Ignorar archivos de dependencias de desarrollo
+/.eslintcache
+/.prettierignore
+/.prettierrc

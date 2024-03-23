@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { format, parseISO } from 'date-fns';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
-import EpisodeDetailsPage from './EpisodeDetailsPage';
+import EpisodeDetailsPage from '../components/EpisodeDetailsPage';
 
 
 const PodcastDetailsPage: React.FC = () => {

@@ -18,6 +18,7 @@ export interface Entry {
   "im:artist": { label: string };
   title: { label: string };
   id: Id;
+  summary: { label: string };
 }
 
 export interface Feed {
@@ -36,6 +37,7 @@ export interface PodcastEpisode {
   episodeUrl: string;
   collectionId: number;
   artistName: string;
+  collectionName: string;
   artworkUrl600: string;
   title: { label: string };
 }

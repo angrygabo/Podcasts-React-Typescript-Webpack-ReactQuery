@@ -1,32 +1,14 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
-import { fetchPodcasts } from '../fetch/fecth'
-import { PodcastDetailsResponse } from '../types/types';
 
 interface EpisodeDetailsPageProps {
     formatDuration: (millis: number) => string;
+    episode: any;
+    podcastId: any;
 }
 
-const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ formatDuration }) => {
-    const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
-
-
-    const { data: podcastDetails, isLoading, error } = useQuery<PodcastDetailsResponse, Error>(
-        ['podcastDetails', podcastId],
-        () => fetchPodcasts<PodcastDetailsResponse>(() => fetch(podcastId!)
-            .then(response => response.json())
-            .then(jsonResponse => JSON.parse(jsonResponse.contents))),
-        {
-            enabled: !!podcastId,
-        }
-    );
-
-    if (isLoading) return <div>Cargando detalles del episodio...</div>;
-
-    // Find espisode
-    const episode = episodeId ? podcastDetails?.results.find(ep => ep.trackId.toString() === episodeId) : null;
+const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ formatDuration, episode, podcastId }) => {
 
     if (!episode) {
         return <div>Episodio no encontrado.</div>;

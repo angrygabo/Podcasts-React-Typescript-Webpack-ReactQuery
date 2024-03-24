@@ -1,11 +1,9 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { format, parseISO } from 'date-fns';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
 import EpisodeDetailsPage from '../components/EpisodeDetailsPage';
-
 
 const PodcastDetailsPage: React.FC = () => {
     const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
@@ -50,13 +48,11 @@ const PodcastDetailsPage: React.FC = () => {
             {podcastDetails && (
                 <div key={podcastDetails.results[0].trackId} className="aside">
                     <figure><img src={podcastDetails.results[0].artworkUrl600} alt={podcastDetails.results[0].artistName} /></figure>
-                
                     {podcastDetails.results[0].artistName}
-
                 </div>
             )}
             {episode ? (
-                <EpisodeDetailsPage formatDuration={formatDuration} />
+                <EpisodeDetailsPage formatDuration={formatDuration} episode={episode} podcastId={podcastId} />
             ) : (
                 <div className="grid">
                     {podcastDetails?.results.slice(1).map((episode: PodcastEpisode) => (

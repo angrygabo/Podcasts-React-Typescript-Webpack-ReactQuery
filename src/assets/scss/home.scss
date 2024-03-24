@@ -66,14 +66,14 @@
     position: relative;
     width: max-content;
     height: auto;
-    &--lenght {
+    .lenght {
       position: absolute;
       min-width: 44px;
       top: 50%;
       transform: translateY(-50%);
       left: -55px;
       padding: 4px 10px;
-      background: #228aa8;
+      background: #1976D2;
       border-radius: 20px;
       color: #ffffff;
       font-size: .75rem;

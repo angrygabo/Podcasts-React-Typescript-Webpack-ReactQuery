@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { format, parseISO } from 'date-fns';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
 import EpisodeDetails from '../components/EpisodeDetails';
@@ -34,7 +33,7 @@ const PodcastDetailsPage: React.FC = () => {
             .then(jsonResponse => JSON.parse(jsonResponse.contents))),
         {
             enabled: !!podcastId,
-            // Cachea por 24h
+            // Cache 24h
             staleTime: 1000 * 60 * 60 * 24, 
             cacheTime: 1000 * 60 * 60 * 24
         }

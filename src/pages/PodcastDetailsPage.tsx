@@ -4,9 +4,10 @@ import { useQuery } from 'react-query';
 import { format, parseISO } from 'date-fns';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
-import EpisodeDetailsPage from '../components/EpisodeDetailsPage';
+import EpisodeDetails from '../components/EpisodeDetails';
 import Loading from '../components/utils/Loading';
 import '../assets/scss/podcastDetail.scss';
+import EpisodeList from '../components/EpisodeList';
 
 const PodcastDetailsPage: React.FC = () => {
     const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
@@ -60,10 +61,6 @@ const PodcastDetailsPage: React.FC = () => {
     return (
         <div className="container">
             <div className="podcastDetail">
-                <div className="podcastDetail_header">
-                    <Link to={'/'}><div className="top_title">Podcaster</div></Link>
-                </div>
-                <hr/>
                 {podcastDetails && (
                     <div key={podcastDetails.results[0].trackId} className="podcastDetail_aside">
                         <figure><img src={podcastDetails.results[0].artworkUrl600} alt={podcastDetails.results[0].artistName} /></figure>
@@ -80,31 +77,10 @@ const PodcastDetailsPage: React.FC = () => {
                     </div>
                 )}
                 {episode ? (
-                    <EpisodeDetailsPage episode={episode} podcastId={podcastId} />
-                ) : (
-                    <div className="podcastDetail_content">
-                        <div className="podcastDetail_content--item">
-                            <div className="podcastDetail_content--grid">
-                                <div className="title headline">Title</div>
-                                <div className="date headline">Date</div>
-                                <div className="duration headline">Duration</div>
-                            </div>
-                        </div>
-                        {podcastDetails?.results.slice(1).map((episode: PodcastEpisode) => (
-                            <div key={episode.trackId} className="podcastDetail_content--item">
-                                <div className="podcastDetail_content--grid">
-                                    <div>
-                                        <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>
-                                            {episode.trackName}
-                                        </Link>
-                                    </div>
-                                    <div>{format(parseISO(episode.releaseDate), 'MM/dd/yyyy')}</div>
-                                    <div>{formatDuration(episode.trackTimeMillis)}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                    <EpisodeDetails episode={episode} podcastId={podcastId as string} />
+                ) : podcastDetails ? (
+                    <EpisodeList podcastId={podcastId as string} podcastDetails={podcastDetails} />
+                ) : null}
             </div>
         </div>
     );

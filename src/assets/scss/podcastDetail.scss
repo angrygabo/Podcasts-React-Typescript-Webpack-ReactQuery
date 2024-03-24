@@ -5,20 +5,6 @@
     height: auto;
     gap: 20px;
     justify-content: space-between;
-    &_header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100%;
-        height: auto;
-        margin-bottom: -20px;
-        .top_title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-            color: #1976D2;
-        }
-    }
     &_aside {
         width: 100%;
         max-width: 300px;

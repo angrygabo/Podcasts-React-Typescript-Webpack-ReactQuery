@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 import { PodcastData } from '../types/types';
+import Filter from '../components/utils/Filter'
 
 interface PodcastListProps {
   data: PodcastData;
@@ -19,28 +19,18 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
     podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // (Apaño, ya que el segundo endpoint no contiene -summary- en el objeto, opté por almacenar para luego recuperarlo)
+  // (Apaño, ya que el segundo endpoint no contiene alguna descripción del podcast en el objeto, opté por almacenar -summary- del primer endpoint para luego recuperarlo)
   const handlePodcastClick = (summary: string) => {
     localStorage.setItem('podcastSummary', summary);
   };
   
   return (
     <>
-      <div className="filterWrap">
-        <div className="filterWrap_box">
-          <span className="lenght">
-            {filteredPodcasts.length}
-          </span>
-          <TextField
-            id="outlined-size-small"
-            size="small"
-            label="Find podcast:"
-            variant="outlined"
-            value={filter}
-            onChange={handleFilterChange}
-          />
-        </div>
-      </div>
+      <Filter
+        filteredPodcastsLength={filteredPodcasts.length}
+        filter={filter}
+        handleFilterChange={handleFilterChange}
+      />
       <div className="podcastsWrap">
         {filteredPodcasts.length > 0 ? (
           filteredPodcasts.map((podcast, index) => {

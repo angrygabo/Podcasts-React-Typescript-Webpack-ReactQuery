@@ -2,6 +2,10 @@
 
 Este proyecto es una aplicación construida con React y TypeScript, empaquetada con Webpack. Está diseñada para proporcionar una experiencia de usuario fluida y eficiente al interactuar con datos de podcast, utilizando algunas de las bibliotecas más populares y poderosas en el ecosistema de React.
 
+## Demo 
+
+http://josegabrielm9.sg-host.com/
+
 ## Características
 
 - **React** :  versión 18
@@ -29,15 +33,8 @@ git clone git@github.com:angrygabo/Podcasts-React-Typescript-Webpack-ReactQuery.
 
 Si usas NPM
 
-npm install
-npm start
+npm install / npm start
 
 Si usas YARM
 
-yarn
-yarn start
-
-
-Pueden mirar la APP funcionando en un dominio temporal
-
-http://josegabrielm9.sg-host.com/
+yarn / yarn start

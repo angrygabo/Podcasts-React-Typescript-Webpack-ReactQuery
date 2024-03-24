@@ -6,7 +6,7 @@ Este proyecto es una aplicación construida con React y TypeScript, empaquetada 
 
 http://josegabrielm9.sg-host.com/
 
-## Características
+## Librerías usadas
 
 - **React** :  versión 18
 - **TypeScript** 

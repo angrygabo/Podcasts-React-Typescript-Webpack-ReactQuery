@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 interface EpisodeDetailsPageProps {
@@ -11,6 +11,10 @@ const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ episode, podcas
     if (!episode) {
         return <div>Episodio no encontrado.</div>;
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     return (
         <div className="podcastDetail_content">

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { fetchPodcasts } from '../fetch/fecth';
-import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
+import { PodcastDetailsResponse } from '../types/types';
 import EpisodeDetails from '../components/EpisodeDetails';
 import Loading from '../components/utils/Loading';
 import '../assets/scss/podcastDetail.scss';
@@ -26,7 +26,7 @@ const PodcastDetailsPage: React.FC = () => {
     const encodedGetPodcatsDetail = encodeURIComponent(getPodcatsDetail);
     const allOriginsUrl = `https://api.allorigins.win/get?url=${encodedGetPodcatsDetail}`;
 
-    const { data: podcastDetails, isLoading, error } = useQuery<PodcastDetailsResponse, Error>(
+    const { data: podcastDetails, isLoading } = useQuery<PodcastDetailsResponse, Error>(
         ['podcastDetails', podcastId],
         () => fetchPodcasts<PodcastDetailsResponse>(() => fetch(allOriginsUrl)
             .then(response => response.json())
@@ -42,21 +42,7 @@ const PodcastDetailsPage: React.FC = () => {
     if (isLoading) { return <Loading info="Loading" />}
 
     const episode = episodeId ? podcastDetails?.results.find(ep => ep.trackId.toString() === episodeId) : null;
-    
-    function formatDuration(millis: number): string {
-        const totalSeconds = Math.floor(millis / 1000);
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-      
-        // Duration format
-        if (hours > 0) {
-            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        } else {
-            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-        }
-    }
-      
+         
     return (
         <div className="container">
             <div className="podcastDetail">

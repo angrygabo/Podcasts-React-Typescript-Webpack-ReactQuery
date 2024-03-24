@@ -8,7 +8,7 @@ import Loading from '../components/utils/Loading';
 const Home: React.FC = () => {
 
     // useQuery fetchPodcasts
-    const { data: podcastData, isLoading, error } = useQuery<PodcastData, Error>('podcasts', () => 
+    const { data: podcastData, isLoading } = useQuery<PodcastData, Error>('podcasts', () => 
         fetchPodcasts<PodcastData>(() => {
             return fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
                 .then(response => response.json());

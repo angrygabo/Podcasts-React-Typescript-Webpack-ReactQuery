@@ -52,6 +52,14 @@ img {
   }
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #dcdbdb;
+  margin: 20px 0;
+}
+
 .loading {
   text-align: center;
   font-weight: 500;
@@ -64,5 +72,15 @@ img {
   }
   svg {
     width: 100px;
+  }
+}
+
+a {
+  color: #cccccc;
+  text-decoration: none;
+  &:hover {
+    color: #242424;
+    text-decoration: none;
+    opacity: .7;
   }
 }

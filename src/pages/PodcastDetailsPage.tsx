@@ -20,8 +20,12 @@ const PodcastDetailsPage: React.FC = () => {
             .then(jsonResponse => JSON.parse(jsonResponse.contents))),
         {
             enabled: !!podcastId,
+            // Cachea por 24h
+            staleTime: 1000 * 60 * 60 * 24, 
+            cacheTime: 1000 * 60 * 60 * 24
         }
     );
+    
 
     if (isLoading) return <div>Cargando detalles del podcast...</div>;
 

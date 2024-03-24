@@ -7,7 +7,6 @@ import PodcastDetailsPage from './pages/PodcastDetailsPage';
 function App() {
   
   return (
-    <div className="container">
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -15,7 +14,6 @@ function App() {
           <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastDetailsPage />} />
         </Routes>
       </Router>
-    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { PodcastData } from '../types/types';
@@ -8,8 +8,6 @@ interface PodcastListProps {
 }
 
 const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
-
-  // Filtra según título
   const [filter, setFilter] = useState('');
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,11 +19,16 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
     podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
   );
 
+  // (Apaño, ya que el segundo endpoint no contiene -summary- en el objeto, opté por almacenar para luego recuperarlo)
+  const handlePodcastClick = (summary: string) => {
+    localStorage.setItem('podcastSummary', summary);
+  };
+  
   return (
     <>
       <div className="filterWrap">
         <div className="filterWrap_box">
-          <span className="filterWrap_box--lenght">
+          <span className="lenght">
             {filteredPodcasts.length}
           </span>
           <TextField
@@ -42,17 +45,24 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
         {filteredPodcasts.length > 0 ? (
           filteredPodcasts.map((podcast, index) => {
             const podcastId = podcast.id.attributes?.['im:id'] ?? 'defaultId';
-
             return (
               <div key={index} className="podcastsWrap_item">
-                <figure className="podcastsWrap_item--banner"><Link to={`/podcast/${podcastId}`}><img src={podcast["im:image"][2].label} alt={podcast["im:name"].label} /></Link></figure>
-                <h2 className="podcastsWrap_item--title"><Link to={`/podcast/${podcastId}`}>{podcast["im:name"].label}</Link></h2>
-                <p>{podcast["im:artist"].label}</p>
+                <figure className="podcastsWrap_item--banner">
+                  <Link onClick={() => handlePodcastClick(podcast.summary.label)} to={`/podcast/${podcastId}`}>
+                    <img src={podcast["im:image"][2].label} alt={podcast["im:name"].label} />
+                  </Link>
+                </figure>
+                <h2 className="podcastsWrap_item--title">
+                  <Link onClick={() => handlePodcastClick(podcast.summary.label)} to={`/podcast/${podcastId}`}>
+                    {podcast["im:name"].label}
+                  </Link>
+                </h2>
+                <p>Author: {podcast["im:artist"].label}</p>
               </div>
             );
           })
         ) : (
-          <p>No se encontraron podcasts que coincidan con tu búsqueda.</p>
+          <p>No hay resultados.</p>
         )}
       </div>
     </>

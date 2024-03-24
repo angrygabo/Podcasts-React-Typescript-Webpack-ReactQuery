@@ -13,7 +13,7 @@ const Home: React.FC = () => {
             return fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
                 .then(response => response.json());
         }),
-        // Caché por 24h
+        // Cache 24h
         {
             staleTime: 1000 * 60 * 60 * 24,
             cacheTime: 1000 * 60 * 60 * 24
@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     if (isLoading) { return <Loading info="Loading" />}
     
     return (
-        <div className="row">
+        <div className="container">
             {podcastData && <PodcastList data={podcastData} />}
         </div>
     );

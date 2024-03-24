@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
-
 import { fetchPodcasts } from '../fetch/fecth'
 import { PodcastData } from '../types/types';
-
 import PodcastList from '../components/PodcastList';
+import '../assets/scss/home.scss';
+import Loading from '../components/utils/Loading';
 
 const Home: React.FC = () => {
 
@@ -13,17 +13,17 @@ const Home: React.FC = () => {
             return fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
                 .then(response => response.json());
         }),
-        // Cachea por 24h
+        // Caché por 24h
         {
             staleTime: 1000 * 60 * 60 * 24,
             cacheTime: 1000 * 60 * 60 * 24
         }
     );
 
-    if (isLoading) return <p>Cargando...</p>;
-
+    if (isLoading) { return <Loading info="Loading" />}
+    
     return (
-        <div className="App">
+        <div className="row">
             {podcastData && <PodcastList data={podcastData} />}
         </div>
     );

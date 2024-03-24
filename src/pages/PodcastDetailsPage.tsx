@@ -4,6 +4,8 @@ import { format, parseISO } from 'date-fns';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse, PodcastEpisode } from '../types/types';
 import EpisodeDetailsPage from '../components/EpisodeDetailsPage';
+import Loading from '../components/utils/Loading';
+import '../assets/scss/podcastDetail.scss';
 
 const PodcastDetailsPage: React.FC = () => {
     const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
@@ -26,8 +28,7 @@ const PodcastDetailsPage: React.FC = () => {
         }
     );
     
-
-    if (isLoading) return <div>Cargando detalles del podcast...</div>;
+    if (isLoading) { return <Loading info="Loading" />}
 
     const episode = episodeId ? podcastDetails?.results.find(ep => ep.trackId.toString() === episodeId) : null;
     
@@ -46,11 +47,14 @@ const PodcastDetailsPage: React.FC = () => {
     }
       
     return (
-        <div>
-            <h1>Detalles del Podcast</h1>
-            <Link to={'/'}>Volver inicio</Link>
+        <div className="podcastDetail">
+            <div className="podcastDetail_header">
+                <h1>Detalles del Podcast</h1>
+                <Link to={'/'}>Volver inicio</Link>
+            </div>
+
             {podcastDetails && (
-                <div key={podcastDetails.results[0].trackId} className="aside">
+                <div key={podcastDetails.results[0].trackId} className="podcastDetail_aside">
                     <figure><img src={podcastDetails.results[0].artworkUrl600} alt={podcastDetails.results[0].artistName} /></figure>
                     {podcastDetails.results[0].artistName}
                 </div>
@@ -58,16 +62,25 @@ const PodcastDetailsPage: React.FC = () => {
             {episode ? (
                 <EpisodeDetailsPage formatDuration={formatDuration} episode={episode} podcastId={podcastId} />
             ) : (
-                <div className="grid">
+                <div className="podcastDetail_content">
+                    <div className="podcastDetail_content--item">
+                        <div className="podcastDetail_content--grid">
+                            <div className="title headline">Title</div>
+                            <div className="date headline">Date</div>
+                            <div className="duration headline">Duration</div>
+                        </div>
+                    </div>
                     {podcastDetails?.results.slice(1).map((episode: PodcastEpisode) => (
-                        <div key={episode.trackId} className="card">
-                            <p>
-                                <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>
-                                    {episode.trackName}
-                                </Link>
-                            </p>
-                            <p>Release Date: {format(parseISO(episode.releaseDate), 'MM/dd/yyyy')}</p>
-                            <p>Duration: {formatDuration(episode.trackTimeMillis)}</p>
+                        <div key={episode.trackId} className="podcastDetail_content--item">
+                            <div className="podcastDetail_content--grid">
+                                <div>
+                                    <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>
+                                        {episode.trackName}
+                                    </Link>
+                                </div>
+                                <div>{format(parseISO(episode.releaseDate), 'MM/dd/yyyy')}</div>
+                                <div>{formatDuration(episode.trackTimeMillis)}</div>
+                            </div>
                         </div>
                     ))}
                 </div>

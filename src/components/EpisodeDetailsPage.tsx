@@ -15,7 +15,7 @@ const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ formatDuration,
     }
 
     return (
-        <div className="episode-details">
+        <div className="podcastDetail_content">
             <h1>{episode.trackName}</h1>
             <p>Release Date: {episode.releaseDate ? format(parseISO(episode.releaseDate), 'MM/dd/yyyy') : 'N/A'}</p>
             <p>Duration: {formatDuration(episode.trackTimeMillis)}</p>

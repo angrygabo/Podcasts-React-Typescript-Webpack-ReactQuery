@@ -3,10 +3,10 @@ import TextField from '@mui/material/TextField';
 interface FilterProps {
   filteredPodcastsLength: number;
   filter: string;
-  handleFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  filterPodcast: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, handleFilterChange }) => {
+const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, filterPodcast }) => {
   return (
     <div className="filterWrap">
       <div className="filterWrap_box">
@@ -19,7 +19,7 @@ const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, handleF
           label="Find podcast:"
           variant="outlined"
           value={filter}
-          onChange={handleFilterChange}
+          onChange={filterPodcast}
         />
       </div>
     </div>

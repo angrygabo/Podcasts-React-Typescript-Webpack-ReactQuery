@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PodcastData } from '../types/types';
 import Filter from '../components/utils/Filter'
@@ -10,7 +10,7 @@ interface PodcastListProps {
 const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
   const [filter, setFilter] = useState('');
 
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const filterPodcast = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value);
   };
 
@@ -20,7 +20,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
   );
 
   // (Apaño, ya que el segundo endpoint no contiene alguna descripción del podcast en el objeto, opté por almacenar -summary- del primer endpoint para luego recuperarlo)
-  const handlePodcastClick = (summary: string) => {
+  const handlePodcastSummary = (summary: string) => {
     localStorage.setItem('podcastSummary', summary);
   };
   
@@ -29,7 +29,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
       <Filter
         filteredPodcastsLength={filteredPodcasts.length}
         filter={filter}
-        handleFilterChange={handleFilterChange}
+        filterPodcast={filterPodcast}
       />
       <div className="podcastsWrap">
         {filteredPodcasts.length > 0 ? (
@@ -38,12 +38,12 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
             return (
               <div key={index} className="podcastsWrap_item">
                 <figure className="podcastsWrap_item--banner">
-                  <Link onClick={() => handlePodcastClick(podcast.summary.label)} to={`/podcast/${podcastId}`}>
+                  <Link onClick={() => handlePodcastSummary(podcast.summary.label)} to={`/podcast/${podcastId}`}>
                     <img src={podcast["im:image"][2].label} alt={podcast["im:name"].label} />
                   </Link>
                 </figure>
                 <h2 className="podcastsWrap_item--title">
-                  <Link onClick={() => handlePodcastClick(podcast.summary.label)} to={`/podcast/${podcastId}`}>
+                  <Link onClick={() => handlePodcastSummary(podcast.summary.label)} to={`/podcast/${podcastId}`}>
                     {podcast["im:name"].label}
                   </Link>
                 </h2>
@@ -52,7 +52,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
             );
           })
         ) : (
-          <p>No hay resultados.</p>
+          <p>No results.</p>
         )}
       </div>
     </>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
@@ -15,6 +14,7 @@ interface EpisodeListProps {
   podcastDetails: {
     results: EpisodeListTypes[];
   };
+ 
 }
 
 // Format time podcast
@@ -33,9 +33,16 @@ const formatDuration = (millis: number): string => {
   }
 };
 
+
+
 const EpisodeList: React.FC<EpisodeListProps> = ({ podcastId, podcastDetails }) => {
+
+  // Episodes Length
+  const numberOfEpisodes = podcastDetails?.results.length || 0;
+
   return (
     <div className="podcastDetail_content">
+      <div className="podcastDetail_content--length">Episodes: {numberOfEpisodes}</div>
       <div className="podcastDetail_content--item">
         <div className="podcastDetail_content--grid">
           <div className="title headline">Title</div>

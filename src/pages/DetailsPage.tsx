@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastDetailsResponse } from '../types/types';
@@ -48,10 +48,16 @@ const PodcastDetailsPage: React.FC = () => {
             <div className="podcastDetail">
                 {podcastDetails && (
                     <div key={podcastDetails.results[0].trackId} className="podcastDetail_aside">
-                        <figure><img src={podcastDetails.results[0].artworkUrl600} alt={podcastDetails.results[0].artistName} /></figure>
+                        <figure>
+                            <Link to={`/podcast/${podcastId}`}>
+                                <img src={podcastDetails.results[0].artworkUrl600} alt={podcastDetails.results[0].artistName} />
+                            </Link>
+                        </figure>
                         <hr/>
                         <div className="podcastDetail_aside--collectionName">
-                            <h3>{podcastDetails.results[0].collectionName}</h3>
+                            <h3>
+                                <Link to={`/podcast/${podcastId}`}>{podcastDetails.results[0].collectionName}</Link>
+                            </h3>
                         </div>
                         <div className="podcastDetail_aside--artistName">by {podcastDetails.results[0].artistName}</div>
                         <hr/>

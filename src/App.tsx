@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from './pages/Home';
-import PodcastDetailsPage from './pages/PodcastDetailsPage';
+import DetailsPage from './pages/DetailsPage';
 import Header from './components/Header';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/podcast/:podcastId" element={<PodcastDetailsPage />} />
-          <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastDetailsPage />} />
+          <Route path="/podcast/:podcastId" element={<DetailsPage />} />
+          <Route path="/podcast/:podcastId/episode/:episodeId" element={<DetailsPage />} />
         </Routes>
       </Router>
   );

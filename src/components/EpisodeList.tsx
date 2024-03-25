@@ -2,27 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
-// Tipado para los episodios recibidos como prop
+// types
 interface EpisodeListTypes {
   trackId: number;
   trackName: string;
-  releaseDate: string; // Asumiendo que viene en formato ISO
+  releaseDate: string;
   trackTimeMillis: number;
 }
 
 interface EpisodeListProps {
-  podcastId: string; // ID del podcast, necesario para construir el Link
+  podcastId: string;
   podcastDetails: {
     results: EpisodeListTypes[];
   };
 }
 
-// Función auxiliar para formatear la duración de milisegundos a horas, minutos y segundos
+// Format time podcast
 const formatDuration = (millis: number): string => {
   const hours = Math.floor(millis / 3600000);
   const minutes = Math.floor((millis % 3600000) / 60000);
   const seconds = Math.floor((millis % 60000) / 1000);
-  return `${hours}h ${minutes}m ${seconds}s`;
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(seconds).padStart(2, '0');
+  return `${hours}:${formattedMinutes}:${formattedSeconds}`;
 };
 
 const EpisodeList: React.FC<EpisodeListProps> = ({ podcastId, podcastDetails }) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastData } from '../types/types';
@@ -54,7 +54,6 @@ const Home: React.FC = () => {
             <div className="podcastsWrap">
                 {filteredPodcasts.length > 0 ? (
                     filteredPodcasts.map((podcast, index) => {
-                        const podcastId = podcast.id.attributes?.['im:id'] ?? 'defaultId';
                         return (
                             <PodcastItem key={index} podcast={podcast} handlePodcastClick={handlePodcastClick} />
                         );

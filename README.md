@@ -6,7 +6,7 @@ Este proyecto es una aplicación construida con React y TypeScript, empaquetada 
 
 http://josegabrielm9.sg-host.com/
 
-## Características
+## Librerías usadas
 
 - **React** :  versión 18
 - **TypeScript** 
@@ -31,10 +31,4 @@ git clone git@github.com:angrygabo/Podcasts-React-Typescript-Webpack-ReactQuery.
 
 2. Instalación de dependencias:
 
-Si usas NPM
-
 npm install / npm start
-
-Si usas YARM
-
-yarn / yarn start

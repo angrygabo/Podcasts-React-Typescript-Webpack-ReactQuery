@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
+// d.types
 interface EpisodeDetailsPageProps {
     episode: any;
     podcastId: any;
@@ -12,9 +13,10 @@ const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ episode, podcas
         return <div>Episode no found.</div>;
     }
 
+    // scroll top on open episode
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
 
     return (
         <div className="podcastDetail_content">

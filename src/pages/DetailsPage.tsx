@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { fetchPodcasts } from '../fetch/fecth';
+
+// Components
 import { PodcastDetailsResponse } from '../types/types';
-import EpisodeDetails from '../components/EpisodeDetails';
+import { fetchPodcasts } from '../fetch/fecth';
 import Loading from '../components/utils/Loading';
-import '../assets/scss/podcastDetail.scss';
 import EpisodeList from '../components/EpisodeList';
+import EpisodeDetails from '../components/EpisodeDetails';
+
+// styles
+import '../assets/scss/podcastDetail.scss';
 
 const PodcastDetailsPage: React.FC = () => {
+
+    // useParams from react-router-dom
     const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
 
+    // Get summary from localStorage    
     const [summary, setSummary] = useState('');
     useEffect(() => {
-
-        // Get summary from localStorage
         const storedSummary = localStorage.getItem('podcastSummary');
         if (storedSummary) {
           setSummary(storedSummary);
         }
       }, []);
 
-    // ReactQuery
+    // useQuery podcastDetails
     const getPodcatsDetail = `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`;
     const encodedGetPodcatsDetail = encodeURIComponent(getPodcatsDetail);
     const allOriginsUrl = `https://api.allorigins.win/get?url=${encodedGetPodcatsDetail}`;
@@ -41,6 +46,7 @@ const PodcastDetailsPage: React.FC = () => {
     
     if (isLoading) { return <Loading info="Loading" />}
 
+    // Find episode
     const episode = episodeId ? podcastDetails?.results.find(ep => ep.trackId.toString() === episodeId) : null;
          
     return (

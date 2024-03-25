@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
-// types
+// d.types
 interface EpisodeListTypes {
   trackId: number;
   trackName: string;
@@ -17,7 +17,7 @@ interface EpisodeListProps {
  
 }
 
-// Format time podcast
+// Time format podcast
 const formatDuration = (millis: number): string => {
   const hours = Math.floor(millis / 3600000);
   const minutes = Math.floor((millis % 3600000) / 60000);
@@ -33,11 +33,9 @@ const formatDuration = (millis: number): string => {
   }
 };
 
-
-
 const EpisodeList: React.FC<EpisodeListProps> = ({ podcastId, podcastDetails }) => {
 
-  // Episodes Length
+  // Episodes Length info
   const numberOfEpisodes = Math.max(0, podcastDetails?.results.length - 1 || 0);
 
   return (

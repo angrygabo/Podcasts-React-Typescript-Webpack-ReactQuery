@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastData } from '../types/types';
 
 // Components
+import { fetchPodcasts } from '../fetch/fecth';
 import Loading from '../components/utils/Loading';
 import Filter from '../components/utils/Filter';
 import PodcastItem from '../components/PodcastItem';
@@ -12,7 +12,8 @@ import PodcastItem from '../components/PodcastItem';
 import '../assets/scss/home.scss';
 
 const Home: React.FC = () => {
-    // useQuery para fetchPodcasts
+
+    // useQuery fetchPodcasts
     const { data: podcastData, isLoading } = useQuery<PodcastData, Error>('podcasts', () => 
         fetchPodcasts<PodcastData>(() => {
             return fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
@@ -24,25 +25,28 @@ const Home: React.FC = () => {
             cacheTime: 1000 * 60 * 60 * 24
         }
     );
-
+    
+    // Filter action podcasts
     const [filter, setFilter] = useState('');
 
     const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target.value);
     };
 
-    const handlePodcastClick = (summary: string) => {
-        localStorage.setItem('podcastSummary', summary);
-    };
-
-    if (isLoading) { 
-        return <Loading info="Loading" />;
-    }
-
     const filteredPodcasts = podcastData ? podcastData.feed.entry.filter(podcast => 
         podcast["im:name"].label.toLowerCase().includes(filter.toLowerCase()) ||
         podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
     ) : [];
+
+    // Set summary podcast in Localstorage
+    const handlePodcastClick = (summary: string) => {
+        localStorage.setItem('podcastSummary', summary);
+    };
+
+
+    if (isLoading) { 
+        return <Loading info="Loading" />;
+    }
 
     return (
         <div className="container">

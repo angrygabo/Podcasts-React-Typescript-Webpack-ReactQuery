@@ -1,4 +1,4 @@
-# Prueba técnica React + TypeScript + React Query
+# React + TypeScript + React Query
 
 Este proyecto es una aplicación construida con React y TypeScript, empaquetada con Webpack. Está diseñada para proporcionar una experiencia de usuario fluida y eficiente al interactuar con datos de podcast, utilizando algunas de las bibliotecas más populares y poderosas en el ecosistema de React.
 
@@ -6,7 +6,7 @@ Este proyecto es una aplicación construida con React y TypeScript, empaquetada 
 
 http://josegabrielm9.sg-host.com/
 
-## Librerías usadas
+## Tecnologías usadas
 
 - **React** :  versión 18
 - **TypeScript** 

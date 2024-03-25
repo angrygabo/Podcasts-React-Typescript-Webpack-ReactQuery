@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { fetchPodcasts } from '../fetch/fecth';
 import { PodcastData } from '../types/types';
-import '../assets/scss/home.scss';
+
+// Components
 import Loading from '../components/utils/Loading';
 import Filter from '../components/utils/Filter';
 import PodcastItem from '../components/PodcastItem';
+
+// styles
+import '../assets/scss/home.scss';
 
 const Home: React.FC = () => {
     // useQuery para fetchPodcasts

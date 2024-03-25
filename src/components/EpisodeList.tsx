@@ -38,7 +38,7 @@ const formatDuration = (millis: number): string => {
 const EpisodeList: React.FC<EpisodeListProps> = ({ podcastId, podcastDetails }) => {
 
   // Episodes Length
-  const numberOfEpisodes = podcastDetails?.results.length || 0;
+  const numberOfEpisodes = Math.max(0, podcastDetails?.results.length - 1 || 0);
 
   return (
     <div className="podcastDetail_content">

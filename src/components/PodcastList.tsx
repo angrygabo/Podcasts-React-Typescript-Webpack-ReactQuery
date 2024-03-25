@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PodcastData } from '../types/types';
+
+// components
 import Filter from '../components/utils/Filter'
 
+// types.d
 interface PodcastListProps {
   data: PodcastData;
 }
 
 const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
+
+  // Find a podcast using filter
   const [filter, setFilter] = useState('');
 
   const filterPodcast = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +24,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
     podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // (Apaño, ya que el segundo endpoint no contiene alguna descripción del podcast en el objeto, opté por almacenar -summary- del primer endpoint para luego recuperarlo)
+  // (Ya que el segundo endpoint no contiene alguna descripción del podcast en el objeto, opté por almacenar -summary- del primer endpoint para luego recuperarlo)
   const handlePodcastSummary = (summary: string) => {
     localStorage.setItem('podcastSummary', summary);
   };
@@ -29,7 +34,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ data }) => {
       <Filter
         filteredPodcastsLength={filteredPodcasts.length}
         filter={filter}
-        handleFilterChange={filterPodcast} // Usa handleFilterChange aquí, asegurándote de que coincide con FilterProps
+        handleFilterChange={filterPodcast}
       />
       <div className="podcastsWrap">
         {filteredPodcasts.length > 0 ? (

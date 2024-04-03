@@ -1,15 +1,15 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import TerserPlugin from 'terser-webpack-plugin';
 
-module.exports = (env, argv) => {
+export default (env, argv) => {
   const isProduction = argv.mode === 'development';
 
   return {
     entry: './src/index.tsx',
     mode: isProduction ? 'production' : 'development',
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(new URL('dist', import.meta.url).pathname),
       filename: isProduction ? 'index_bundle.[contenthash].js' : 'bundle.js',
       publicPath: '/',
     },

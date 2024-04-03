@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { PodcastData } from '../types/types';
 
@@ -7,9 +7,6 @@ import { fetchPodcasts } from '../api/fecth';
 import Loading from '../components/utils/Loading';
 import Filter from '../components/utils/Filter';
 import PodcastItem from '../components/PodcastItem';
-
-// styles
-import '../assets/scss/home.scss';
 
 const Home: React.FC = () => {
 

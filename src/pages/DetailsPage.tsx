@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
@@ -8,9 +8,6 @@ import { fetchPodcasts } from '../api/fecth';
 import Loading from '../components/utils/Loading';
 import EpisodeList from '../components/EpisodeList';
 import EpisodeDetails from '../components/EpisodeDetails';
-
-// styles
-import '../assets/scss/podcastDetail.scss';
 
 const PodcastDetailsPage: React.FC = () => {
 

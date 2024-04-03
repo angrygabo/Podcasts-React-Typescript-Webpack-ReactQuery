@@ -1,6 +1,6 @@
-interface LoadingProps {
-    info: string;
-}
+import React from 'react';
+import { LoadingProps } from '../../types/types';
+
 
 const Loading: React.FC<LoadingProps> = ({ info }) => {
   return (

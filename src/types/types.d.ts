@@ -75,3 +75,7 @@ export interface PodcastItemProps {
   podcast: any;
   handlePodcastClick: (summary: string) => void;
 }
+
+export interface LoadingProps {
+  info: string;
+}

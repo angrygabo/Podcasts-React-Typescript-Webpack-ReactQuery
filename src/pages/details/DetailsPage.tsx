@@ -3,11 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 // Components
-import { PodcastDetailsResponse } from '../types';
-import { fetchPodcasts } from '../api/fecth';
-import Loading from '../components/utils/Loading';
-import EpisodeList from '../components/EpisodeList';
-import EpisodeDetails from '../components/EpisodeDetails';
+import { PodcastDetailsResponse } from '../../types';
+import { fetchPodcasts } from '../../api/fecth';
+import Loading from '../../components/utils/Loading';
+import EpisodeList from './template-parts/EpisodeList';
+import EpisodeDetails from './template-parts/EpisodeDetails';
 
 const PodcastDetailsPage: React.FC = () => {
 

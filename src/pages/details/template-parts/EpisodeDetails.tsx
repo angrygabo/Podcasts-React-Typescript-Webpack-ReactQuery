@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 // d.types
-import { EpisodeDetailsPageProps } from '../types';
+import { EpisodeDetailsPageProps } from '../../../types';
 
 const EpisodeDetailsPage: React.FC<EpisodeDetailsPageProps> = ({ episode, podcastId }) => {
 

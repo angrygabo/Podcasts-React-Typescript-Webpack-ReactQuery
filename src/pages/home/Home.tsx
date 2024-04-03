@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { PodcastData } from '../types';
+import { PodcastData } from '../../types';
 
 // Components
-import { fetchPodcasts } from '../api/fecth';
-import Loading from '../components/utils/Loading';
-import Filter from '../components/utils/Filter';
-import PodcastItem from '../components/PodcastItem';
+import { fetchPodcasts } from '../../api/fecth';
+import Loading from '../../components/utils/Loading';
+import Filter from '../../components/utils/Filter';
+import PodcastItem from './template-parts/PodcastItem';
 
 const Home: React.FC = () => {
 

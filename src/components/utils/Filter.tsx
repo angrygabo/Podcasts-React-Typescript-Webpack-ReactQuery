@@ -1,11 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-
-interface FilterProps {
-  filteredPodcastsLength: number;
-  filter: string;
-  handleFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { FilterProps } from '../../types';
 
 const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, handleFilterChange }) => {
   return (

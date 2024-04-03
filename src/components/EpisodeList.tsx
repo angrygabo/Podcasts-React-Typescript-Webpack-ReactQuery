@@ -2,20 +2,7 @@ import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
 // d.types
-interface EpisodeListTypes {
-  trackId: number;
-  trackName: string;
-  releaseDate: string;
-  trackTimeMillis: number;
-}
-
-interface EpisodeListProps {
-  podcastId: string;
-  podcastDetails: {
-    results: EpisodeListTypes[];
-  };
- 
-}
+import { EpisodeListProps } from '../types/types'
 
 // Time format podcast
 const formatDuration = (millis: number): string => {

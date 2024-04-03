@@ -51,3 +51,27 @@ export interface PodcastDetailsResponse {
   "im:artist": { label: string };
   title: { label: string };
 }
+
+export interface EpisodeDetailsPageProps {
+  episode: any;
+  podcastId: any;
+}
+
+export interface EpisodeListTypes {
+  trackId: number;
+  trackName: string;
+  releaseDate: string;
+  trackTimeMillis: number;
+}
+
+interface EpisodeListProps {
+  podcastId: string;
+  podcastDetails: {
+    results: EpisodeListTypes[];
+  };
+}
+
+export interface PodcastItemProps {
+  podcast: any;
+  handlePodcastClick: (summary: string) => void;
+}

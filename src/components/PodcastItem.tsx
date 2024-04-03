@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // d.types
-interface PodcastItemProps {
-    podcast: any;
-    handlePodcastClick: (summary: string) => void;
-}
+import { PodcastItemProps } from '../types/types'
 
 const PodcastItem: React.FC<PodcastItemProps> = ({ podcast, handlePodcastClick }) => {
     

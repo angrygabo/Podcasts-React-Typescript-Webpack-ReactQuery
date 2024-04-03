@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { PodcastData } from '../types/types';
 
 // Components
-import { fetchPodcasts } from '../fetch/fecth';
+import { fetchPodcasts } from '../api/fecth';
 import Loading from '../components/utils/Loading';
 import Filter from '../components/utils/Filter';
 import PodcastItem from '../components/PodcastItem';

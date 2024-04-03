@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 // Components
 import { PodcastDetailsResponse } from '../types/types';
-import { fetchPodcasts } from '../fetch/fecth';
+import { fetchPodcasts } from '../api/fecth';
 import Loading from '../components/utils/Loading';
 import EpisodeList from '../components/EpisodeList';
 import EpisodeDetails from '../components/EpisodeDetails';

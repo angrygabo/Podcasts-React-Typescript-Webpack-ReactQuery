@@ -23,6 +23,10 @@ http://josegabrielm9.sg-host.com/
 - Formateo y manipulación de fechas con date-fns para presentar las fechas de publicación de los podcasts de forma legible.
 - Tipado estático y mejoras en el desarrollo gracias a TypeScript.
 
+## Patrón de diseño usado HOC
+
+HOC, o Higher Order Component (Componente de Orden Superior). Este patrón se basa en la idea de que los componentes son funciones que toman componentes como argumentos y devuelven nuevos componentes. En términos simples, un HOC es una función que toma un componente y devuelve un nuevo componente mejorado.
+
 ## Instrucciones de Instalación
 
 1. Clone el repositorio:

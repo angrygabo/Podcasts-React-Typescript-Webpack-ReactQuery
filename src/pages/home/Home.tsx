@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+
+// Types.d
 import { PodcastData } from '../../types';
 
-// Components
+// Api
 import { fetchPodcasts } from '../../api/fecth';
+
+// Components & template parts
 import Loading from '../../components/utils/Loading';
 import Filter from '../../components/utils/Filter';
 import PodcastItem from './template-parts/PodcastItem';

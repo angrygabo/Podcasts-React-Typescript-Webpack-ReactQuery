@@ -79,3 +79,9 @@ export interface PodcastItemProps {
 export interface LoadingProps {
   info: string;
 }
+
+export interface FilterProps {
+  filteredPodcastsLength: number;
+  filter: string;
+  handleFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}

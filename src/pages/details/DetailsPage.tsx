@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-// Components
+// Types.d
 import { PodcastDetailsResponse } from '../../types';
+
+// Api
 import { fetchPodcasts } from '../../api/fecth';
+
+// Components & template parts
 import Loading from '../../components/utils/Loading';
 import EpisodeList from './template-parts/EpisodeList';
 import EpisodeDetails from './template-parts/EpisodeDetails';

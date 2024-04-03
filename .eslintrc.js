@@ -14,7 +14,8 @@ module.exports = {
                 "node": true
             },
             "files": [
-                ".eslintrc.{js,cjs}"
+                ".eslintrc.{js,cjs}",
+                "webpack.config.js"
             ],
             "parserOptions": {
                 "sourceType": "script"
@@ -31,5 +32,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        '@typescript-eslint/no-var-requires': 0,
     }
 }

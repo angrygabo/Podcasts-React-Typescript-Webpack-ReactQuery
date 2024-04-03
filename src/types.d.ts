@@ -53,8 +53,8 @@ export interface PodcastDetailsResponse {
 }
 
 export interface EpisodeDetailsPageProps {
-  episode: any;
-  podcastId: any;
+  episode: Episode;
+  podcastId: string;
 }
 
 export interface EpisodeListTypes {
@@ -72,7 +72,7 @@ interface EpisodeListProps {
 }
 
 export interface PodcastItemProps {
-  podcast: any;
+  podcast: Episode;
   handlePodcastClick: (summary: string) => void;
 }
 

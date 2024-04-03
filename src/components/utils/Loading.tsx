@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingProps } from '../../types/types';
+import { LoadingProps } from '../../types';
 
 
 const Loading: React.FC<LoadingProps> = ({ info }) => {

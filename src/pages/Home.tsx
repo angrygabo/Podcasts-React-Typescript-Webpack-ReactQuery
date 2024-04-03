@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { PodcastData } from '../types/types';
+import { PodcastData } from '../types';
 
 // Components
 import { fetchPodcasts } from '../api/fecth';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // d.types
-import { PodcastItemProps } from '../types/types'
+import { PodcastItemProps } from '../types'
 
 const PodcastItem: React.FC<PodcastItemProps> = ({ podcast, handlePodcastClick }) => {
     

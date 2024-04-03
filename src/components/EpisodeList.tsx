@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
 // d.types
-import { EpisodeListProps } from '../types/types'
+import { EpisodeListProps } from '../types'
 
 // Time format podcast
 const formatDuration = (millis: number): string => {

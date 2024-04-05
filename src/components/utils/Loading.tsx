@@ -1,8 +1,6 @@
 import React from 'react';
-import { LoadingProps } from '../../types';
 
-
-const Loading: React.FC<LoadingProps> = ({ info }) => {
+const Loading: React.FC = () => {
   return (
     <div className="loading">
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{ margin: 'auto', background: 'rgb(241, 242, 243)', display: 'block', shapeRendering: 'auto' }} width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -16,7 +14,6 @@ const Loading: React.FC<LoadingProps> = ({ info }) => {
                 <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.15s"></animate>
             </circle>
         </svg>
-        <div className="loading_info">{info}</div>
     </div>
   );
 };

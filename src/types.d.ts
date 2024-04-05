@@ -29,6 +29,25 @@ export interface PodcastData {
   feed: Feed;
 }
 
+export interface Podcast {
+  "im:name": {
+      label: string;
+  };
+  "im:artist": {
+      label: string;
+  };
+  "summary": {
+    label: string;
+  };
+}
+
+export interface PodcastData {
+  feed: {
+      entry: Podcast[];
+  };
+}
+
+
 export interface PodcastEpisode {
   trackId: number;
   trackName: string;
@@ -64,7 +83,7 @@ export interface EpisodeListTypes {
   trackTimeMillis: number;
 }
 
-interface EpisodeListProps {
+export interface EpisodeListProps {
   podcastId: string;
   podcastDetails: {
     results: EpisodeListTypes[];
@@ -73,15 +92,19 @@ interface EpisodeListProps {
 
 export interface PodcastItemProps {
   podcast: Episode;
-  handlePodcastClick: (summary: string) => void;
-}
-
-export interface LoadingProps {
-  info: string;
 }
 
 export interface FilterProps {
-  filteredPodcastsLength: number;
+  filteredLength: number;
   filter: string;
   handleFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface PodcastContextType {
+  data: PodcastData | undefined;
+  isLoading: boolean;
+}
+
+export interface PodcastProviderProps {
+  children: ReactNode;
 }

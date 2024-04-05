@@ -1,16 +1,19 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import { FilterProps } from '../../types';
 
-const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, handleFilterChange }) => {
+// types.d
+import { FilterProps } from '@/types';
+
+const Filter: React.FC<FilterProps> = ({ filteredLength, filter, handleFilterChange }) => {
   return (
+    <>
     <div className="filterWrap">
       <div className="filterWrap_box">
-        <span className="length_podcast">
-          {filteredPodcastsLength}
+        <span className="length_results">
+          {filteredLength}
         </span>
         <TextField
-          id="outlined-size-small"
+          id="filter"
           size="small"
           label="Find podcast:"
           variant="outlined"
@@ -19,6 +22,7 @@ const Filter: React.FC<FilterProps> = ({ filteredPodcastsLength, filter, handleF
         />
       </div>
     </div>
+    </>
   );
 };
 

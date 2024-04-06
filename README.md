@@ -24,7 +24,7 @@ Este proyecto es una aplicación construida con React y TypeScript, empaquetada 
 
 ## Styles
 
-He modularizado los estilos, creando un fichero global style.scss en el que se importan componentes de estilos para cada página desde src/scss/*.
+He modularizado los estilos, creando un fichero global style.scss en el que se importan componentes de estilos para cada página desde assets/scss/*.
 
 ## Arquitectura aplicada  
 

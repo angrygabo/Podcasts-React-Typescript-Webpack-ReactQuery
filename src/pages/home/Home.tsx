@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 
     const { data: podcastData, isLoading } = useFetchPodcasts();
 
-    // Filter
+    // Filter podcast
     const [filter, setFilter] = useState('');
 
     const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {

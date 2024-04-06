@@ -1,10 +1,7 @@
-import React, { createContext, useContext } from 'react';
-
 /*
   El propósito de este contexto es servir datos del podcast a toda la app, ya que por ejemplo el "summary" solo se obtiene del primer fetch.
 */ 
-
-// Hook useQuery
+import React, { createContext, useContext } from 'react';
 import useFetchPodcasts from '@/hooks/useQuery/useFetchPodcasts';
 
 // Types.d

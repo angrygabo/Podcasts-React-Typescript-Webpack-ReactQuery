@@ -3,7 +3,7 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (argv) => {
-  const isProduction = argv.mode === 'development';
+  const isProduction = argv.mode === 'production';
 
   return {
     entry: './src/index.tsx',

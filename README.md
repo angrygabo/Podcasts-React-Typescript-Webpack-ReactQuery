@@ -22,6 +22,10 @@ Este proyecto es una aplicación construida con React y TypeScript, empaquetada 
 - Formateo y manipulación de fechas con date-fns para presentar las fechas de publicación de los podcasts de forma legible.
 - Tipado estático y mejoras en el desarrollo gracias a TypeScript.
 
+## Styles
+
+He modularizado los estilos, creando un fichero global style.scss en el que se importan componentes de estilos para cada página desde src/scss/*.
+
 ## Arquitectura aplicada  
 
 Apliqué -Clean Architecture- para mejorar la escalabilidad y mantenibilidad del proyecto, logrando un código desacoplado que facilita las pruebas y actualizaciones de componentes. Esta arquitectura promueve la modularidad, separando la lógica del dominio. Adoptar Clean Architecture subraya mi enfoque en un desarrollo que permita preparar el proyecto para crecer y evolucionar fácilmente.

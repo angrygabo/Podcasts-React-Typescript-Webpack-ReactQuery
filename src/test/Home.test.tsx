@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from '../pages/home/Home';
 
-jest.mock('@/hooks/useQuery/useFetchPodcasts', () => () => ({
+jest.mock('@/services/useFetchPodcasts', () => () => ({
     data: {
         feed: {
             entry: [

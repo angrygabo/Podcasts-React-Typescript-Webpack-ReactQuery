@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { usePodcasts } from '@/context/PodcastContext';
 
 // Hooks
-import usePodcastDetails from '@/hooks/useQuery/usePodcastDetails';
+import useFetchPodcastDetails from '@/services/useFetchPodcastDetails';
 
 // Components
 import Loading from '@/components/utils/Loading';
@@ -15,8 +15,8 @@ const PodcastDetailsPage: React.FC = () => {
     // Get params from URL
     const { podcastId = '', episodeId } = useParams<{ podcastId: string; episodeId?: string }>();
 
-    // Hook usePodcastDetails, params 'podcastId'
-    const { podcastDetails, isLoading } = usePodcastDetails(podcastId);
+    // Hook useFetchPodcastDetails, params 'podcastId'
+    const { podcastDetails, isLoading } = useFetchPodcastDetails(podcastId);
         
     // Get summary from context
     const { data: podcastData } = usePodcasts(); 

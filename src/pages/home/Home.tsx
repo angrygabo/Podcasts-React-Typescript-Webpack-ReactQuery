@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Hooks
-import useFetchPodcasts from '@/hooks/useQuery/useFetchPodcasts';
+import useFetchPodcasts from '@/services/useFetchPodcasts';
 import useFilterPodcasts from '@/hooks/useFilterPodcasts';
 
 // Components

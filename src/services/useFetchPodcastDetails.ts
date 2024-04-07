@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { fetchPodcasts } from '@/api/fetch';
 import { PodcastDetailsResponse } from '@/types';
 
-const usePodcastDetails = (podcastId: string) => {
+const useFetchPodcastDetails = (podcastId: string) => {
     const getPodcastDetailUrl = `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`;
     const encodedGetPodcastDetailUrl = encodeURIComponent(getPodcastDetailUrl);
     const allOriginsUrl = `https://api.allorigins.win/get?url=${encodedGetPodcastDetailUrl}`;
@@ -22,4 +22,4 @@ const usePodcastDetails = (podcastId: string) => {
     return { podcastDetails, isLoading };
 };
 
-export default usePodcastDetails;
+export default useFetchPodcastDetails;

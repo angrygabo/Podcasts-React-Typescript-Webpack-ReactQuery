@@ -2,7 +2,7 @@
   El propósito de este contexto es servir datos del podcast a toda la app, ya que por ejemplo el "summary" solo se obtiene del primer fetch.
 */ 
 import React, { createContext, useContext } from 'react';
-import useFetchPodcasts from '@/hooks/useQuery/useFetchPodcasts';
+import useFetchPodcasts from '@/services/useFetchPodcasts';
 
 // Types.d
 import { PodcastContextType, PodcastProviderProps } from '@/types';
